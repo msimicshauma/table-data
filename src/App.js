@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Users from './Users';
 
 class App extends Component {
+  state = {
+    users: null
+  }
+
+  fetchData = () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => {
+        return res.json();
+      })
+      .then(users => {
+        this.setState({
+          users
+        })
+      });
+  }
+
   render() {
+    const users = this.state.users ? (
+      <Users users={this.state.users} />
+    ) : (
+      <p>Users not loaded</p>
+    )
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="button-wrapper">
+          <button onClick={this.fetchData}>Fetch</button>
+        </div>
+      
+        { users }
       </div>
     );
   }
