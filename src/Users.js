@@ -17,6 +17,14 @@ const Users = ({ users, toggleDetails }) => {
           <td>{user.username}</td>
           <td><button onClick={() => toggleDetails(user.id)}>Details</button></td>
         </tr>
+
+        <tr className={detailsClass + ' default'}>
+          <td>Company name</td>
+          <td>User website</td>
+          <td>Street</td>
+          <td>City</td>
+        </tr>
+
         <tr className={detailsClass}>
           <td>{user.company.name}</td>
           <td>{user.website}</td>
@@ -29,6 +37,12 @@ const Users = ({ users, toggleDetails }) => {
 
   return(
     <table>
+      <tr className="default">
+        <td>Name</td>
+        <td>Email</td>
+        <td>Username</td>
+        <td>Show details</td>
+      </tr>
       { fetchedUsers }
     </table>
   );

@@ -52,3 +52,7 @@ td {
 .show {
   display: table-row;
 }
+
+.default {
+  font-weight: bold;
+}

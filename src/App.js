@@ -3,21 +3,27 @@ import Users from './Users';
 
 class App extends Component {
   state = {
-    users: null
+    users: null,
+    fetchCount: 0
   }
 
   fetchData = () => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(res => {
-        return res.json();
-      })
-      .then(users => {
-        for(let i = 0; i < users.length; i++) users[i].hidden = true;
+    if(this.state.fetchCount === 0){
+      const fetchCount = 1;
 
-        this.setState({
-          users
-        });
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => {
+          return res.json();
+        })
+        .then(users => {
+          for(let i = 0; i < users.length; i++) users[i].hidden = true;
+
+          this.setState({
+            users,
+            fetchCount
+          });
       });
+    }
   }
 
   toggleDetails = (userId) => {
