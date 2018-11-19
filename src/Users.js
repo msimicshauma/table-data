@@ -37,12 +37,14 @@ const Users = ({ users, toggleDetails }) => {
 
   return(
     <table>
-      <tr className="default">
-        <td>Name</td>
-        <td>Email</td>
-        <td>Username</td>
-        <td>Show details</td>
-      </tr>
+      <tbody>
+        <tr className="default">
+          <td>Name</td>
+          <td>Email</td>
+          <td>Username</td>
+          <td>Show details</td>
+        </tr>
+      </tbody>
       { fetchedUsers }
     </table>
   );
